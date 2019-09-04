@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SESSION_COOKIE_AGE = 5
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'main_page'
 ]
 
-
+USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
