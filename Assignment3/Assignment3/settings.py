@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'part1',
-    'main_page'
+    'main_page',
+    'part2'
 ]
 
 USE_TZ = True
