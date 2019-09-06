@@ -3,25 +3,27 @@
 {% block content %}
 <p> Hello,  {{ user.username }} !</p>
 
-<h1> CPU </h1>
+{% for parts in items %}
 
-<div class="card-deck">
+  <h1>{{ parts.0.ItemType }}</h1>
+  <div class="card-deck">
 
-    {% for cpu in cpus %}
-      <div class="card " style="width: 18rem;">
+      {% for part in parts %}
+        <div class="card " style="width: 18rem;">
 
-        <img class="card-img-top" src="../static/images/item_{{ cpu.pk }}.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{ cpu.name }}</h5>
-          <p class="card-text">{{ cpu.description }}</p>
-            <div style="position: relative; bottom: 0; margin-bottom: 10px">
-              <p ><strong>Price: </strong> {{ cpu.price }}</p>
-              <a  href="#" class="btn btn-primary">Add to Cart</a>
-            </div>
+          <img class="card-img-top" src="../static/images/item_{{ part.pk }}.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ part.name }}</h5>
+            <p class="card-text">{{ part.description }}</p>
+              <div style="position: relative; bottom: 0; margin-bottom: 10px">
+                <p ><strong>Price: </strong> {{ part.price }}</p>
+                <a  href="#" class="btn btn-primary">Add to Cart</a>
+              </div>
+          </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
 
-</div>
+  </div>
+{% endfor %}
 
 {% endblock %}

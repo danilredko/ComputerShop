@@ -23,5 +23,5 @@ def home(request):
 
     monitors = Item.objects.filter(ItemType='Monitor')
 
-    return render(request, 'home.html', {'rams': rams, 'cpus': cpus, 'hard_drives': hard_drives, 'mother_boards': mother_boards, 'monitors': monitors})
+    return render(request, 'home.html', {'rams': rams, 'cpus': cpus, 'hard_drives': hard_drives, 'mother_boards': mother_boards, 'monitors': monitors, 'items': [cpus, mother_boards, hard_drives, rams, monitors]})
 
