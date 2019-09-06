@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'part1',
     'main_page',
     'part2',
-    'accounts'
+    'accounts',
+    'shop'
 ]
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'welcome_page'
 LOGIN_REDIRECT_URL = 'home'
 USE_TZ = True
 STATIC_URL = '/static/'
