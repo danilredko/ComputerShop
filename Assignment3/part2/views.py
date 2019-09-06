@@ -6,4 +6,4 @@ from django.shortcuts import render
 
 def index(request):
 
-    render(request, 'part2.html')
+    return render(request, 'part2.html')

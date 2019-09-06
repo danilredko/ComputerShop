@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'part1',
     'main_page',
-    'part2'
+    'part2',
+    'accounts'
 ]
-
+LOGOUT_REDIRECT_URL = 'home'
 USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
