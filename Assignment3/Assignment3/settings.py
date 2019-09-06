@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SESSION_COOKIE_AGE = 5
+SESSION_COOKIE_AGE = 1000
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts'
 ]
 LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'home'
 USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def index(request):
+def main_page(request):
 
     return render(request, 'tma3.html')
 
