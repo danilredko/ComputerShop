@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary text-white">
-        <a class='navbar-brand' href="{% url 'home' %}"> Computer Shop </a>
+        <a class='nav-brand' href="{% url 'main_page' %}"> Assignment Main Page </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class='collapse navbar-collapse' id='navbarSupportedContent'>
           <ur class="navbar-nav mr-auto">
             <li class='nav-item active'>
-              <a class='nav-link' href="{% url 'main_page' %}"> Assignment Main Page </a>
+              <a class='nav-link' href="{% url 'home' %}"> Computer Shop </a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item dropdown">
@@ -26,6 +25,8 @@
                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
               </div>
             </li>
+            <li class="nav-item active">
+              <a class='nav-link' href="cart"> Your Cart </a>
 
             {% else %}
             <li class="nav-item active">

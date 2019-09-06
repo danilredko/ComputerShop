@@ -17,11 +17,16 @@ def home(request):
 
     cpus = Item.objects.filter(ItemType='CPU')
 
-    hard_drives = Item.objects.filter(ItemType='HardDrive')
+    hard_drives = Item.objects.filter(ItemType='HD')
 
-    mother_boards = Item.objects.filter(ItemType='MotherBoard')
+    mother_boards = Item.objects.filter(ItemType='MB')
 
     monitors = Item.objects.filter(ItemType='Monitor')
 
-    return render(request, 'home.html', {'rams': rams, 'cpus': cpus, 'hard_drives': hard_drives, 'mother_boards': mother_boards, 'monitors': monitors, 'items': [cpus, mother_boards, hard_drives, rams, monitors]})
+    return render(request, 'home.html', {'items': [cpus, mother_boards, hard_drives, rams, monitors]})
 
+
+@login_required(login_url='welcome_page')
+def cart(request):
+
+    return render(request, 'cart.html')

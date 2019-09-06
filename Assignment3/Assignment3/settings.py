@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'main_page',
     'part2',
     'accounts',
-    'shop'
+    'shop',
+    'import_export'
 ]
 LOGOUT_REDIRECT_URL = 'welcome_page'
 LOGIN_REDIRECT_URL = 'home'
