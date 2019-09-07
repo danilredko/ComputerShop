@@ -3,7 +3,7 @@ from .models import Item, Order, OrderItems
 # Create your views here.
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import redirect
 
 def welcome_page(request):
 
@@ -27,6 +27,22 @@ def home(request):
 
 
 @login_required(login_url='welcome_page')
-def cart(request):
+def cart(request, item_id):
 
-    return render(request, 'cart.html')
+    if 'cart' not in request.session:
+        request.session['cart'] = list()
+
+    else:
+        request.session['cart'] = request.session['cart'] + [item_id]
+
+    return redirect('home')
+
+
+def show_cart(request):
+
+    if 'cart' not in request.session:
+        cart_items = 0
+    else:
+        cart_items = Item.objects.filter(pk__in=request.session['cart'])
+
+    return render(request, 'show_cart.html', {'cart_items': cart_items})
