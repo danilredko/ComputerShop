@@ -31,10 +31,12 @@ def cart(request, item_id):
 
     if 'cart' not in request.session:
         request.session['cart'] = list()
+        request.session['cart'] = request.session['cart'] + [item_id]
+        request.session['total'] = float(Item.objects.get(pk=item_id).price)
 
     else:
-        request.session['cart'] = request.session['cart'] + [item_id]
-
+        request.session['cart'] += [item_id]
+        request.session['total'] += float(Item.objects.get(pk=item_id).price)
     return redirect('home')
 
 
@@ -43,6 +45,12 @@ def show_cart(request):
     if 'cart' not in request.session:
         cart_items = 0
     else:
-        cart_items = Item.objects.filter(pk__in=request.session['cart'])
+        cart_items = {}
+        for id in request.session['cart']:
+            cart_item = Item.objects.get(pk=id)
+            if cart_item in cart_items:
+                cart_items[cart_item] += 1
+            else:
+                cart_items[cart_item] = 1
 
     return render(request, 'show_cart.html', {'cart_items': cart_items})

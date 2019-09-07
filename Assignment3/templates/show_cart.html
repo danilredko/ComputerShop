@@ -8,9 +8,39 @@
 <p> No items in the cart </p>
 {% else %}
 <p> You items : </p>
-{{ cart_items }}
-
 {% endif %}
 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for item, value in cart_items.items %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ item.name }} </td>
+      <td>{{ value }}</td>
+
+      <td>{{ item.price }}</td>
+    </tr>
+  {% endfor %}
+  <tr>
+
+      <td></td>
+      <td></td>
+      <td><strong>Total: </strong></td>
+      <td>{{ request.session.total }}</td>
+
+    </tr>
+  </tbody>
+
+</table>
 
 {% endblock %}
