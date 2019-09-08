@@ -1,52 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<p>You cart</p>
-
-{% if cart_items|length == 0 %}
-<p> No items in the cart </p>
+{% if orders|length == 0 %}
+<br>
+<br>
+<h1 style="text-align: center"> You have not placed any orders </h1>
 {% else %}
-<p> You items : </p>
+<br>
+<h1 style="text-align: center"> Your order history</h1>
 
+{% for order_id, items in orders.items %}
 
+<br>
+<br>
+<p><strong>Order#:</strong> {{ forloop.counter }}</p>
 <table class="table table-hover">
+
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Product</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
-        <th></th>
 
     </tr>
   </thead>
   <tbody>
 
-  {% for item, value in cart_items.items %}
+  {% for item, value in items.items %}
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{ item.name }} </td>
       <td>{{ value }}</td>
       <td>{{ item.price }}</td>
-        <td> <a  href="{% url 'delete_cart_item' item.pk %}" class="btn btn-outline-danger" >Delete</a>
-</td>
+
     </tr>
   {% endfor %}
   <tr>
 
       <td></td>
       <td></td>
-      <td></td>
       <td><strong>Total: </strong></td>
-      <td>{{ request.session.total }}</td>
-
+      <td>{{ totals|get_item:order_id }}</td>
     </tr>
 
   </tbody>
 
 </table>
- <a  href="{% url 'submit_order' %}" class="btn btn-outline-success btn-lg btn-block" >Submit Order</a>
-
+{% endfor %}
 {% endif %}
 {% endblock %}
