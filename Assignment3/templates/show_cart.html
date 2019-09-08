@@ -3,12 +3,12 @@
 {% block content %}
 
 <p>You cart</p>
-
+{{ request.session.cart }}
 {% if cart_items == 0 %}
 <p> No items in the cart </p>
 {% else %}
 <p> You items : </p>
-{% endif %}
+
 
 <table class="table table-hover">
   <thead>
@@ -17,6 +17,7 @@
       <th scope="col">Product</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
+        <th></th>
 
     </tr>
   </thead>
@@ -27,12 +28,14 @@
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{ item.name }} </td>
       <td>{{ value }}</td>
-
       <td>{{ item.price }}</td>
+        <td> <a  href="{% url 'delete_cart_item' item.pk %}" class="btn btn-outline-danger" >Delete</a>
+</td>
     </tr>
   {% endfor %}
   <tr>
 
+      <td></td>
       <td></td>
       <td></td>
       <td><strong>Total: </strong></td>
@@ -42,5 +45,5 @@
   </tbody>
 
 </table>
-
+{% endif %}
 {% endblock %}

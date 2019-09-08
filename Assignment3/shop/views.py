@@ -37,9 +37,12 @@ def cart(request, item_id):
     else:
         request.session['cart'] += [item_id]
         request.session['total'] += float(Item.objects.get(pk=item_id).price)
+
+    request.session['total'] = round(request.session['total'], 2)
     return redirect('home')
 
 
+@login_required(login_url='welcome_page')
 def show_cart(request):
 
     if 'cart' not in request.session:
@@ -54,3 +57,16 @@ def show_cart(request):
                 cart_items[cart_item] = 1
 
     return render(request, 'show_cart.html', {'cart_items': cart_items})
+
+
+@login_required(login_url='welcome_page')
+def delete_cart_item(request, item_id):
+
+    price_to_delete = float(Item.objects.get(pk=item_id).price)
+    list_delete = request.session['cart']
+    list_delete.remove(item_id)
+    request.session['cart'] = list_delete
+    request.session['total'] -= price_to_delete
+    request.session['total'] = round(request.session['total'], 2)
+    return redirect('show_cart')
+

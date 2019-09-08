@@ -27,7 +27,9 @@
             </li>
             <li class="nav-item active">
               <a class='nav-link' href="show_cart" > Your Cart: {{ request.session.cart|length }}</a>
-
+              <li class="nav-item active">
+              <a class='nav-link' > Total : {{ request.session.total }}</a>
+                </li>
             {% else %}
             <li class="nav-item active">
               <a class='nav-link' href="signup">Sign Up</a>
@@ -37,7 +39,7 @@
               <li>
 
             {% endif %}
-
+          </ur>
         </div>
 
     </nav>
