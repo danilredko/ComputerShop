@@ -119,3 +119,22 @@ def order_history(request):
 
     return render(request, 'order_history.html', {'orders': order_hist, 'totals': totals})
 
+
+@login_required(login_url='welcome_page')
+def change_password(request):
+
+    success_msg = ''
+    new_password = ''
+
+    if request.method == 'POST':
+
+        new_password = request.POST.get('new_password')
+
+        current_user = request.user
+        current_user.set_password(new_password)
+        current_user.save()
+
+        success_msg = 'You Password was changed!'
+
+    return render(request, 'change_password.html', {'msg': success_msg})
+

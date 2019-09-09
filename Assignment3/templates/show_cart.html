@@ -2,13 +2,15 @@
 
 {% block content %}
 
-<p>You cart</p>
 
 {% if cart_items|length == 0 %}
-<p> No items in the cart </p>
+<br>
+<br>
+<h1 style="text-align: center"> You do have any items in your cart </h1>
 {% else %}
-<p> You items : </p>
-
+<br>
+<br>
+<h1 style="text-align: center"> Your items :</h1>
 
 <table class="table table-hover">
   <thead>
