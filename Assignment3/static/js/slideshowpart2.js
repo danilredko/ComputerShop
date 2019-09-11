@@ -52,7 +52,7 @@ function BuildSlideShow(){
 
   };
 
-  xmlhttp.open("GET", "http://127.0.0.1:8000/static/json_files/all_images.json", true);
+  xmlhttp.open("GET", "http://0.0.0.0:80/static/json_files/all_images.json", true);
   xmlhttp.send();
 
 };
