@@ -3,7 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
 from .forms import SignUpForm
 # Create your views here.
-
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template import loader
 
 def home(request):
 
@@ -21,4 +23,5 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
 

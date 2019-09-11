@@ -138,3 +138,4 @@ def change_password(request):
 
     return render(request, 'change_password.html', {'msg': success_msg})
 
+
