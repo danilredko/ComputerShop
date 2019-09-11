@@ -36,17 +36,17 @@ def get_visits(request):
     return request.session['visits']
 
 
-def get_timezone():
+def set_timezone(request):
 
-    response = requests.get('http://ip-api.com/json/').json()
+    request.session['timezone'] = requests.get('http://ip-api.com/json/').json()['timezone']
 
-    return response['timezone']
+    return 0
 
 
 def index(request):
 
     ip = get_client_ip(request)
     visits = get_visits(request)
-    timezone = get_timezone()
-    return render(request, 'part1.html', {'ip': ip, 'visits': visits, 'timezone': timezone})
+    set_timezone(request)
+    return render(request, 'part1.html', {'ip': ip, 'visits': visits, 'timezone': request.session['timezone']})
 

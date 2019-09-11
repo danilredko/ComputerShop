@@ -37,7 +37,6 @@ function BuildSlideShow(){
             img_el.setAttribute('style', 'width:100%');
             document.getElementById('img'+i).appendChild(img_el);
 
-
             var caption_el = document.createElement('div');
             caption_el.setAttribute('class', 'text');
             caption_el.textContent = list_images[i].caption;
