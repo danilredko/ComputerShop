@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <style>
@@ -75,62 +76,8 @@ img {vertical-align: middle;}
 @media only screen and (max-width: 300px) {
 
 </style>
-<script>
-function BuildSlideShow(){
 
-  var xmlhttp = new XMLHttpRequest();
-
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-
-      var myObj = JSON.parse(this.responseText);
-
-        list_images = myObj.images;
-
-        total_images = list_images.length
-
-        for (i = 0; i < total_images ; i++) {
-
-
-            var div_img = document.createElement('div');
-            div_img.setAttribute('class', 'mySlides fade');
-            div_img.setAttribute('id', 'img'+i);
-            document.getElementById("slideshow").appendChild(div_img);
-
-            n = i + 1;
-            var numbertext_div = document.createElement('div');
-            numbertext_div.setAttribute('class', 'numbertext');
-            numbertext_div.textContent = n + ' / ' + total_images;
-            document.getElementById('img'+i).appendChild(numbertext_div);
-
-            var img_el = document.createElement('img');
-            img_el.setAttribute('src', list_images[i].path );
-            img_el.setAttribute('style', 'width:100%');
-            document.getElementById('img'+i).appendChild(img_el);
-
-
-            var caption_el = document.createElement('div');
-            caption_el.setAttribute('class', 'text');
-            caption_el.textContent = list_images[i].caption;
-            document.getElementById('img'+i).appendChild(caption_el);
-
-            var span_el = document.createElement('span');
-            span_el.setAttribute('class', 'dot');
-            document.getElementById('dots_for_control').appendChild(span_el);
-
-        }
-    }
-
-  };
-
-  xmlhttp.open("GET", "http://127.0.0.1:8000/static/json_files/all_images.json", true);
-  xmlhttp.send();
-
-};
-BuildSlideShow();
-</script>
-
-
+<a href="{% url 'main_page' %}" class="btn btn-primary btn-lg active" style='width:100%' role="button" aria-pressed="true">Main Page</a>
 
 <div class="slideshow-container" id="slideshow">
 
