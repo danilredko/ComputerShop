@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p> Hello,  {{ user.username }} !</p>
-{{ t }}
-
+<br>
+<h1 style="text-align:left; padding-left: 5%;">Hello,  {{ user.username }}!</h1>
+<br>
+<div class="row">
 {% for parts in items %}
 
-  <h1>{{ parts.0.ItemType }}</h1>
-
-  <div class="card-deck">
 
       {% for part in parts %}
-        <div class="card " style="width: 18rem;">
+        <div class="card col-12 col-xl-3 col-lg-3 col-md-4 col-sm-6" style="width: 18rem;">
 
           <img class="card-img-top" src="../static/images/item_{{ part.pk }}.jpg" alt="Card image cap">
           <div class="card-body">
@@ -27,7 +25,10 @@
         </div>
       {% endfor %}
 
-  </div>
+
+
 {% endfor %}
+
+</div>
 
 {% endblock %}
